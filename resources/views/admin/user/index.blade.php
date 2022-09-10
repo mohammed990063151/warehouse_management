@@ -46,7 +46,7 @@
 
                 </div><!-- end of box header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
 
                     @if ($users->count() > 0)
 
