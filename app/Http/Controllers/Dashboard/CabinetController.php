@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Cabinet;
-use App\Models\product;
-use App\Models\order;
+use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class CabinetController extends Controller
 {
 
- 
+
     public function index(Request $request)
     {
         // return $request;
@@ -25,33 +25,33 @@ class CabinetController extends Controller
         })->latest()->paginate(5);
 
         $sales_data = Cabinet::select(
-            
+
             DB::raw('SUM(Cabinet) as sum')
-            
+
         )->get();
         $departed_data = Cabinet::select(
-            
+
             DB::raw('SUM(departed) as sum')
-            
+
         )->get();
 
-        $Stored_capital = product::select(
-            
+        $Stored_capital = Product::select(
+
             DB::raw('SUM(Stored_capital) as sum')
-            
+
         )->get();
 
-        $products_capital = product::select(
-            
+        $products_capital = Product::select(
+
             DB::raw('SUM(capital) as sum')
-           
-            
+
+
         )->get();
-      
-        $orders = order::select(
-            
+
+        $orders = Order::select(
+
             DB::raw('SUM(total_discuont) as sum')
-            
+
         )->get();
         $int = intval(preg_replace('/[^0-9]+/', '', $sales_data), 10);
         $data = intval(preg_replace('/[^0-9]+/', '', $departed_data), 10);
@@ -62,7 +62,7 @@ class CabinetController extends Controller
 
     }//end of index
 
-   
+
     public function create()
     {
         return view('admin.Cabinet.create');
@@ -90,21 +90,21 @@ class CabinetController extends Controller
             ]);
           session()->flash('success', __('site.added_successfully'));
         return redirect()->route('dashboard.Cabinet.index');
-       
+
     }
 
-   
+
 
     public function edit( Cabinet $Cabinet)
     {
         return view('admin.Cabinet.edit', compact('Cabinet'));
     }
 
-   
+
     public function update(Request $request, Cabinet $Cabinet)
 
     {
-       
+
         $id = $request->id;
 
         $this->validate($request, [

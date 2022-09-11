@@ -25,37 +25,39 @@ use App\Http\Controllers\Dashboard\TableController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
-function () {
 
-    Route::get('/send-notification',function(){
-        // $user = User::find(2);
-        // $user->notify(new EmailNotification());
-        // Notification::send($user, new EmailNotification());
-        $users = User::all();
-        foreach($users as $user){
-           Notification::send($user, new EmailNotification('Nazmul','Web Journey')); 
-        }
-        return redirect()->back();
-    });
+// Route::group(
+//     ['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
+//     function () {
 
-
-   
-    Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
-
-    Route::get("/index" , [DashboardController::class, "index"])->name('index');
-
-Route::resource('users', User_PostController::class)->except(['show']);
+        Route::get('/send-notification', function () {
+            // $user = User::find(2);
+            // $user->notify(new EmailNotification());
+            // Notification::send($user, new EmailNotification());
+            $users = User::all();
+            foreach ($users as $user) {
+                Notification::send($user, new EmailNotification('Nazmul', 'Web Journey'));
+            }
+            return redirect()->back();
+        });
 
 
 
+        Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
 
- //category routes
- Route::resource('categories', CategoiresController::class)->except(['show']);
+            Route::get("/index", [DashboardController::class, "index"])->name('index');
+
+            Route::resource('users', User_PostController::class)->except(['show']);
 
 
- Route::resource('products', ProductController::class);
- Route::get('update/{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'edite_order'])->name('update');
+
+
+            //category routes
+            Route::resource('categories', CategoiresController::class)->except(['show']);
+
+
+            Route::resource('products', ProductController::class);
+            Route::get('update/{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'edite_order'])->name('update');
 
             //client routes
             Route::resource('clients', ClientController::class)->except(['show']);
@@ -63,7 +65,7 @@ Route::resource('users', User_PostController::class)->except(['show']);
 
             //order routes
             Route::resource('orders', OrderController::class);
-            Route::get('/orders/{order}/products', [OrderController::class ,"products"])->name('orders.products');
+            Route::get('/orders/{order}/products', [OrderController::class, "products"])->name('orders.products');
 
 
             //user routes
@@ -74,9 +76,8 @@ Route::resource('users', User_PostController::class)->except(['show']);
 
 
             Route::resource('Table', TableController::class)->except(['show']);
-
-});//end of dasboard routes
-});
+        }); //end of dasboard routes
+//     }
+// );
 
 // });
-
