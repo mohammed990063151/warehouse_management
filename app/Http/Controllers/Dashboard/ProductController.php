@@ -60,7 +60,7 @@ class ProductController extends Controller
         $request->validate($rules);
 
         $request_data = $request->all();
-        $request_data['Stored_capital'] = $request->purchase_price * $request->stock;
+        $request_data['Stored_capital'] = $request->sale_qure * $request->stock;
 
         // if ($request->image) {
 
@@ -110,7 +110,7 @@ class ProductController extends Controller
         $request->validate($rules);
 
         $request_data = $request->all();
-        $request_data['Stored_capital'] = $request->purchase_price * $request->stock;
+        $request_data['Stored_capital'] = $request->sale_qure * $request->stock;
 
         // if ($request->image) {
 

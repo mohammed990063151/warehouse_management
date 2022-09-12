@@ -233,7 +233,7 @@
 
             <form action="{{ route('dashboard.update', $product->id) }}" method="put" autocomplete="off">
                 {{ csrf_field() }}
-                        {{ method_field('put') }}
+                        {{-- {{ method_field('put') }} --}}
                        
                 <div class="form-group">
                     <input type="hidden" name="id" id="id" value="">

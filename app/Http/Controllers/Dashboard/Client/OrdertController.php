@@ -80,7 +80,7 @@ class OrdertController extends Controller
             $price  =  $product->sale_price;
             $product->update([
                 'stock' => $product->stock - $quantity['quantity'],
-                'Stored_capital' => ($product->stock - $quantity['quantity']) * $product->purchase_price
+                'Stored_capital' => ($product->stock - $quantity['quantity']) * $product->sale_qure
             ]);
 
         }//end of foreach
@@ -103,7 +103,7 @@ class OrdertController extends Controller
 
          $product->update([
                 'stock' => $product->stock + $product->pivot->quantity,
-                'Stored_capital' => ($product->stock + $product->pivot->quantity) * $product->purchase_price
+                'Stored_capital' => ($product->stock + $product->pivot->quantity) * $product->sale_qure
             ]);
 
         }//end of for each

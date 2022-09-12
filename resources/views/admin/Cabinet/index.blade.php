@@ -78,9 +78,9 @@
                                     <td>{!! $user->description !!}</td>
                                     <td>{{ $user->Created_by }}</td>
                                     <td>{{ $user->created_at->toFormattedDateString() }}</td>
-                                    <td><span class="text-success">{{ number_format($user->Cabinet, 2) }}</span></td>
+                                    <td><span class="text-success">${{ number_format($user->Cabinet, 2) }}</span></td>
                                     <td>  
-                                        <span class="text-danger"> {{ number_format($user->departed, 2) }}</span>
+                                        <span class="text-danger">${{ number_format($user->departed, 2) }}</span>
                                 </td>
 
                                       <td>
@@ -108,8 +108,8 @@
                                 <td>#</td>
                                 <td colspan="3">المجموع:</td>
 
-                                <td><span class="bg-success text-white">{{ number_format($int, 2) }}</span></td>
-                                <td><span class="bg-danger text-white">{{ number_format($data, 2) }}</span></td>
+                                <td><span class="bg-success text-white">${{ number_format($int, 2) }}</span></td>
+                                <td><span class="bg-danger text-white">${{ number_format($data, 2) }}</span></td>
                                 
                             </tr>
 
@@ -117,7 +117,7 @@
                                 <td>#</td>
                                 <td colspan="3">الكاش المتوفرة:</td>
 
-                                <td><span class="bg-warning text-white">{{ number_format($int - $data, 2) }}</span></td>
+                                <td><span class="bg-warning text-white">${{ number_format($int - $data, 2) }}</span></td>
                                 
                                 
                             </tr>
@@ -166,22 +166,25 @@
                              
                             <div class="form-group">
                                 <label>الكاش المتوفرة:</label>
-                                <span class="bg-warning text-white">{{ number_format($int - $data, 2) }}</span>
+                                <span class="bg-warning text-white">${{ number_format($int - $data, 2) }}</span>
                             </div>
 
                             <div class="form-group">
                                 <label>الكاش الخارجه:</label>
-                                <span class="bg-warning text-white">{{ number_format($discuont, 2) }}</span>
+                                <span class="bg-warning text-white">${{ number_format($discuont, 2) }}</span>
                             </div>
 
-                            <div class="form-group">
-                                <label> قيمة بضاعة المخزن:</label>
-                                <span class="bg-warning text-white">{{number_format($Stored_capital, 2)}}</span>
-                            </div>
+                            
                             <div class="form-group totle_cash">
                                 <label> المجموع:</label>
                                 {{-- <span class="bg-warning text-white totle"  value="{{ number_format($discuont + $int - $data , 2) }}" id="totle">{{ number_format($discuont + $int - $data , 2) }}</span> --}}
-                                <input type="number" class="form-control" step="0.01" name="totle" value="{{ intval(preg_replace('/[^0-9]+/', '', $discuont + $Stored_capital + $int - $data), 10)}}"  id="totle" name="sale_qure" readonly >
+                                <input type="number" class="form-control" step="0.01" name="totle" value="{{ intval(preg_replace('/[^0-9]+/', '', $discuont  + $int - $data), 10)}}"  id="totle" name="sale_qure" readonly >
+                            </div>
+
+                            <div class="form-group">
+                                <label>  قيمة البضاعة في المخزن بجنية المصري</label>
+                                <input type="number" class="form-control" step="0.01" value="{{ intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10)}}"  id="Stored_capital" readonly >
+                                {{-- <span class="bg-warning text-white">{{number_format($Stored_capital, 2)}}</span> --}}
                             </div>
 
                             <div class="form-group">
@@ -229,15 +232,17 @@
         var totle=$(this).closest('.totle_cash').find('.total').html();
         var totle = parseFloat(document.getElementById("totle").value);
         var totle_capitale = parseFloat(document.getElementById("totle_capitale").value);
+        var Stored_capital = parseFloat(document.getElementById("Stored_capital").value);
 
-        console.log(totle_capitale);
+        // console.log(Stored_capital);
         var qure = parseFloat(document.getElementById("qure").value);
         // console.log(qure);
         var totle_qure = parseFloat(document.getElementById("totle_qure").value);
        
 
 
-        var Amount_Commission3 = totle / qure;
+        var Amount_Commission3 = totle / qure + Stored_capital;
+        // console.log(Amount_Commission3);
         var Amount_Commission4 = Amount_Commission3 - totle_capitale;
         var net_profit_sudain = Amount_Commission4 * qure;
 
@@ -247,6 +252,7 @@
 
         } else {
             var intResults = Amount_Commission3 ;
+            
             var intResults_capitale = Amount_Commission4 ;
             var intResults_net_profit = net_profit_sudain ;
 

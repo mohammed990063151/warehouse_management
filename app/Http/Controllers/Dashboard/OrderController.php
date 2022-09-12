@@ -35,7 +35,7 @@ class OrderController extends Controller
 
             $product->update([
                 'stock' => $product->stock + $product->pivot->quantity,
-                'Stored_capital' => ($product->stock + $product->pivot->quantity) * $product->purchase_price
+                'Stored_capital' => ($product->stock + $product->pivot->quantity) * $product->sale_qure
             ]);
 
         }//end of for each
