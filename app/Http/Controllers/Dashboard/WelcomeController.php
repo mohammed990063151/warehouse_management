@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Cabinet;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Order;
@@ -15,6 +16,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
+
         $categories_count = Category::count();
         $products_count = Product::count();
         $clients_count = Client::count();
@@ -26,7 +28,21 @@ class WelcomeController extends Controller
             DB::raw('SUM(total_price) as sum')
         )->groupBy('month')->get();
 
-        return view('dashboard.welcome', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data'));
+
+        $Cabinet = Cabinet::select(
+
+            DB::raw('SUM(Cabinet) as sum')
+
+        )->get();
+        $departed = Cabinet::select(
+
+            DB::raw('SUM(departed) as sum')
+
+        )->get();
+        $Cabinet = intval(preg_replace('/[^0-9]+/', '', $Cabinet), 10);
+        $departed = intval(preg_replace('/[^0-9]+/', '', $departed), 10);
+// return $departed;
+        return view('dashboard.welcome', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data','Cabinet','departed'));
     
     }//end of index
     

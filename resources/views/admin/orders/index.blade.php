@@ -67,8 +67,8 @@
                                     
                                         <tr>
                                             <td>{{ $order->client->name }}</td>
-                                            <td>{{ number_format($order->total_price, 2) }}</td>
-                                            <td>{{ number_format($order->total_discuont, 2) }}</td>
+                                            <td>${{ number_format($order->total_price, 2) }}</td>
+                                            <td>${{ number_format($order->total_discuont, 2) }}</td>
                                             <td>  
                                                 @if ($order->total_discuont == 0)
                                                 <span class="text-success">مدفوعة</span>

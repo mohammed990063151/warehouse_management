@@ -84,8 +84,8 @@
                                     <td>{!! $product->description !!}</td>
                                     <td>{{ $product->category->name }}</td>
                                     {{-- <td><img src="{{ $product->image_path }}" style="width: 100px"  class="img-thumbnail" alt=""></td> --}}
-                                    <td>{{ $product->purchase_price }}</td>
-                                    <td>{{ $product->sale_price }}</td>
+                                    <td>${{ number_format($product->purchase_price, 2) }}</td>
+                                    <td>${{ number_format($product->sale_price, 2) }}</td>
                                     <td>{{ $product->profit_percent }} %</td>
                                     <td>{{ $product->stock }}</td>
                                     <td>

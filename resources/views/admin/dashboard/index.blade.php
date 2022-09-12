@@ -37,7 +37,7 @@
 
             {{--products--}}
             <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
+                <div class="small-box bg-purple">
                     <div class="inner">
                         <h3>{{ $products_count }}</h3>
 
@@ -79,6 +79,38 @@
                     <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            {{-- Cabinet --}}
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>${{ number_format($Cabinet - $departed) }}</h3>
+
+                        <p> المبلغ المتوفر</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <a href="{{ route('dashboard.Cabinet.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            {{--orders--}}
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-maroon">
+                    <div class="inner">
+                        <h3>${{ number_format($discuont, 2) }}</h3>
+
+                        <p>دائنون</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-university"></i>
+                    </div>
+                    <a href="{{ route('dashboard.orders.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            {{--total_discuont--}}
+           
 
         </div><!-- end of row -->
 

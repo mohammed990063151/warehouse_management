@@ -64,7 +64,7 @@
                                                             <tr>
                                                                 <td>{{ $product->name }}</td>
                                                                 <td>{{ $product->stock }}</td>
-                                                                <td>{{ $product->sale_price }}</td>
+                                                                <td>${{ number_format($product->sale_price, 2) }}</td>
                                                                 <td>
                                                                     <a href=""
                                                                        id="product-{{ $product->id }}"
@@ -192,7 +192,7 @@
                                                         @foreach ($order->products as $product)
                                                         <li class="list-group-item">{{ $client->name }}</li>
                                                             <li class="list-group-item">{{ $product->name }}</li>
-                                                            <li class="list-group-item">المتبقي:{{ $order->total_discuont }}</li>
+                                                            <li class="list-group-item">المتبقي:{{ number_format($order->total_discuont, 2) }}</li>
                                                         @endforeach
                                                     </ul>
 
