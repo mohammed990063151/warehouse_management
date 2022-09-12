@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class CategoiresController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $categories = Category::when($request->search, function ($q) use ($request) {
@@ -22,14 +22,14 @@ class CategoiresController extends Controller
 
     }//end of index
 
-  
+
     public function create()
     {
         return view('admin.categories.create');
 
     }//end of create
 
-    
+
     public function store(Request $request)
     {
         $rules = [];
@@ -48,13 +48,13 @@ class CategoiresController extends Controller
 
     }//end of store
 
-  
+
     public function show(category $category)
     {
         //
     }
 
-    
+
     public function edit(Category $category)
     {
         return view('admin.categories.edit', compact('category'));

@@ -54,8 +54,6 @@
 
         <form action="{{ route('login') }}" method="post">
             {{ csrf_field() }}
-            {{ method_field('post') }}
-
             @include('admin.partials._errors')
 
             <div class="form-group has-feedback">
