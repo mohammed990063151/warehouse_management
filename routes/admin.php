@@ -13,7 +13,7 @@ use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\OrderController;
 // use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\CabinetController;
-use App\Http\Controllers\Dashboard\TableController;
+use App\Http\Controllers\Dashboard\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ use App\Http\Controllers\Dashboard\TableController;
             Route::resource('Cabinet', CabinetController::class);
 
 
-            Route::resource('Table', TableController::class)->except(['show']);
+            Route::resource('Calendar', CalendarController::class)->except(['show']);
         }); //end of dasboard routes
 //     }
 // );

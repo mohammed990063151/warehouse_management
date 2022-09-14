@@ -19,6 +19,7 @@ return [
             'orders' => 'c,r,u,d',
             'users' => 'c,r,u,d',
            'Cabinet'=> 'c,r,u,d',
+           'Calendar'=> 'r',
         ],
      'admin'=>[]
     ],

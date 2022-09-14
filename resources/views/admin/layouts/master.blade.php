@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <title>AdminLTE 2 | Blank Page</title> --}}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  <!-- DataTables -->
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
     {{--<!-- Bootstrap 3.3.7 -->--}}
     @include('admin.layouts.head')
@@ -29,5 +30,6 @@
 
 </div><!-- end of wrapper -->
 @include('admin.layouts.footer-scripts')
+@yield('scripts')
 </body>
 </html>

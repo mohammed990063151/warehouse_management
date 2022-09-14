@@ -42,8 +42,10 @@
             @if (auth()->user()->hasPermission('read_Cabinet'))
             <li><a href="{{ route('dashboard.Cabinet.index') }}"><i class="fa fa-university"></i><span>@lang('site.Cabinet')</span></a></li>
         @endif
-        {{-- <li><a href="{{ route('dashboard.Table.index') }}"><i class="fa fa-university"></i><span>@lang('site.Cabinet')</span></a></li> --}}
 
+        @if (auth()->user()->hasPermission('read_Cabinet'))
+        <li><a href="{{ route('dashboard.Calendar.index') }}"><i class="fa fa-calendar"></i><span>التقويم</span></a></li>
+        @endif
             {{-- <li><a href="{{ route('dashboard.categories.index') }}"><i class="fa fa-book"></i><span>@lang('site.categories')</span></a></li>--}}
             {{----}}
             {{----}}

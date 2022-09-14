@@ -1,21 +1,22 @@
 
 <title>@yield('title')</title>
-<link rel="stylesheet" href="{{ asset('dashboard_files/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('dashboard_files/css/ionicons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('dashboard_files/css/skin-blue.min.css') }}">
-
-
+  <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/skin-blue.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" />
  <!-- DataTables -->
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ URL::asset('dashboard_files/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
 @if (app()->getLocale() == 'ar')
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/font-awesome-rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/AdminLTE-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/font-awesome-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/AdminLTE-rtl.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/bootstrap-rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/bootstrap-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/rtl.css') }}">
 
     <style>
         body, h1, h2, h3, h4, h5, h6 {
@@ -24,8 +25,8 @@
     </style>
 @else
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard_files/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('dashboard_files/css/AdminLTE.min.css') }}">
 @endif
 
 <style>
