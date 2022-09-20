@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Dashboard\Client;
 
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Cabinet;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,14 +18,15 @@ class OrdertController extends Controller
         $categories = Category::with('products')->get();
         $orders = $client->orders()->with('products')->paginate(5);
         $Product = Product::all();
-        return view('admin.clients.orders.create', compact( 'client', 'categories', 'orders','Product'));
+        $Cabinet = Cabinet::all();
+        return view('admin.clients.orders.create', compact( 'client', 'categories', 'orders','Product','Cabinet'));
 
     }//end of create
 
     public function store(Request $request, Client $client)
     {
         
-        // dd($request->all());
+        // dd($client->all());
         $request->validate([
             'products' => 'required|array',
         ]);
@@ -94,6 +97,13 @@ class OrdertController extends Controller
             'total_discuont'=>$total_discuont,
             'discuont'=> $request->discuont
         ]);
+        $Cabinet = Cabinet::with('Cabinet');
+        $Cabinet->create([
+            'Cabinet' => $request->discuont,
+            'description' => 'تم تحويلها من الطلبات',
+            'Created_by' => (Auth::user()->first_name),
+            'discuont'=> 0
+        ]);
 
     }//end of attach order
 
@@ -109,6 +119,7 @@ class OrdertController extends Controller
         }//end of for each
 
         $order->delete();
+        // $Cabinet->delete();
 
     }//end of detach order
 

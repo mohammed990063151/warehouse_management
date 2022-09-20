@@ -45,7 +45,7 @@ return [
     'last_name' => 'الاسم الاخير',
     'email' => 'البريد الاكتروني',
     'image' => 'صوره',
-    'action' => 'اكشن',
+    'action' => 'العمليات',
 
     'permissions' => 'الصلاحيات',
 
@@ -54,7 +54,7 @@ return [
     'name' => 'الاسم',
     'description' => 'الوصف',
     'products_count' => 'عدد المنتجات',
-    'related_products' => 'المنتجات المرتبطه',
+    'related_products' => 'المنتجات الاقسام',
     'category' => 'القسم',
     'show_products' => 'عرض المنتجات',
     'created_at' => 'تم اضافته',
