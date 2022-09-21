@@ -1,20 +1,20 @@
-@extends('admin.layouts.master') 
+@extends('admin.layouts.master')
 @section('title')
 جدول الشيكات
 @stop
 
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> --}}
-     
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> --}}
-     
-   
- 
 
- 
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> --}}
+
+
+
+
+
 
 
 @section('content')
- 
+
 
 
   <div class="content-wrapper">
@@ -29,18 +29,19 @@
       <div class="box box-primary">
           <div class="box-header with-border">
       <div class="response"></div>
-      <div id='calendar'></div>  
+      <div id='calendar'></div>
   </div>
 </div>
 </div>
   @endsection
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
 
 
   <script>
+
     $(document).ready(function () {
     var SITEURL = "{{url('/')}}";
     $.ajaxSetup({
@@ -48,6 +49,7 @@
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
+    $('#calendar').addTouch();
     var calendar = $('#calendar').fullCalendar({
     editable: true,
     events: SITEURL + "/dashboard/Calendar",
@@ -63,7 +65,7 @@
     selectable: true,
     selectHelper: true,
     select: function (start, end, allDay) {
-    var title = prompt('Event Title:');
+    var title = alert('is goggd');
     if (title) {
     var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
     var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");

@@ -58,6 +58,7 @@ class CabinetController extends Controller
         $products_capital = intval(preg_replace('/[^0-9]+/', '', $products_capital), 10);
         $Stored_capital = intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10);
         $discuont = intval(preg_replace('/[^0-9]+/', '', $orders), 10);
+        // dd($int , $data , $products_capital, $Stored_capital, $discuont);
         return view('admin.Cabinet.index', compact('Cabinet' ,'int','data','orders','Stored_capital','discuont', 'products_capital'));
 
     }//end of index

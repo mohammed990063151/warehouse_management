@@ -1,4 +1,4 @@
-@extends('admin.layouts.master') 
+@extends('admin.layouts.master')
 @section('title')
 بيانات الخزانة
 @stop
@@ -60,7 +60,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                
+
                                 <th>@lang('site.description')</th>
                                 <th>@lang('site.created_at')</th>
                                 <th>المستخدم</th>
@@ -69,17 +69,17 @@
                                 <th></th>
                             </tr>
                             </thead>
-                            
+
                             <tbody>
                             @foreach ($Cabinet as $index=>$user)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    
+
                                     <td>{!! $user->description !!}</td>
                                     <td>{{ $user->Created_by }}</td>
                                     <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                     <td><span class="text-success">${{ number_format($user->Cabinet, 2) }}</span></td>
-                                    <td>  
+                                    <td>
                                         <span class="text-danger">${{ number_format($user->departed, 2) }}</span>
                                 </td>
 
@@ -101,7 +101,7 @@
                                         @endif
                                     </td>
                                 </tr>
-                            
+
                             @endforeach
 
                             <tr style="font-weight: bold">
@@ -110,7 +110,7 @@
 
                                 <td><span class="bg-success text-white">${{ number_format($int, 2) }}</span></td>
                                 <td><span class="bg-danger text-white">${{ number_format($data, 2) }}</span></td>
-                                
+
                             </tr>
 
                             <tr style="font-weight: bold">
@@ -118,19 +118,19 @@
                                 <td colspan="3">الكاش المتوفرة:</td>
 
                                 <td><span class="bg-warning text-white">${{ number_format($int - $data, 2) }}</span></td>
-                                
-                                
+
+
                             </tr>
                             </tbody>
 
                         </table><!-- end of table -->
-                        
+
                         {{-- {{ $Cabinet->appends(request()->query())->links() }} --}}
-                        
+
                     @else
-                        
+
                         <h2>@lang('site.no_data_found')</h2>
-                        
+
                     @endif
 
                 </div><!-- end of box body -->
@@ -154,16 +154,16 @@
                 <section class="content">
 
                     <div class="box box-primary">
-        
+
                         <div class="box-header">
                             <h3 class="box-title">تحصيل ارباح في النظام</h3>
                         </div><!-- end of box header -->
-        
+
                         <div class="box-body">
-        
+
                             @include('admin.partials._errors')
-        
-                             
+
+
                             <div class="form-group">
                                 <label>الكاش المتوفرة:</label>
                                 <span class="bg-warning text-white">${{ number_format($int - $data, 2) }}</span>
@@ -174,7 +174,7 @@
                                 <span class="bg-warning text-white">${{ number_format($discuont, 2) }}</span>
                             </div>
 
-                            
+
                             <div class="form-group totle_cash">
                                 <label> المجموع:</label>
                                 {{-- <span class="bg-warning text-white totle"  value="{{ number_format($discuont + $int - $data , 2) }}" id="totle">{{ number_format($discuont + $int - $data , 2) }}</span> --}}
@@ -183,7 +183,7 @@
 
                             <div class="form-group">
                                 <label>  قيمة البضاعة في المخزن بجنية المصري</label>
-                                <input type="number" class="form-control" step="0.01" value="{{ intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10)}}"  id="Stored_capital" readonly >
+                                <input type="number" class="form-control" step="0.01" value="{{$Stored_capital}}"  id="Stored_capital" readonly >
                                 {{-- <span class="bg-warning text-white">{{number_format($Stored_capital, 2)}}</span> --}}
                             </div>
 
@@ -195,8 +195,8 @@
                                 <label>    المجموعة بالجنية المصري:</label>
                                 <input type="number" class="form-control" step="0.01" name="totle_qure" min='0' id="totle_qure" name="sale_qure" readonly >
                             </div>
-         
-                            
+
+
                             <div class="form-group">
                                 <label>   راس المال بجنية المصري:</label>
                                 <input type="number" class="form-control" value="{{ intval(preg_replace('/[^0-9]+/', '', $products_capital), 10)}}" id ='totle_capitale' readonly >
@@ -210,14 +210,14 @@
                                 <label>   صافية الارباح بالسوداني</label>
                                 <input type="number" class="form-control"  id ='net_profit_sudain' readonly >
                             </div>
-        
-        
+
+
                         </div><!-- end of box body -->
-        
+
                     </div><!-- end of box -->
-        
+
                 </section>
-           
+
           </div>
         </div>
     </div>
@@ -227,7 +227,7 @@
 
 <script>
     function myFunction() {
-           
+
 
         var totle=$(this).closest('.totle_cash').find('.total').html();
         var totle = parseFloat(document.getElementById("totle").value);
@@ -238,7 +238,7 @@
         var qure = parseFloat(document.getElementById("qure").value);
         // console.log(qure);
         var totle_qure = parseFloat(document.getElementById("totle_qure").value);
-       
+
 
 
         var Amount_Commission3 = totle / qure + Stored_capital;
@@ -252,7 +252,7 @@
 
         } else {
             var intResults = Amount_Commission3 ;
-            
+
             var intResults_capitale = Amount_Commission4 ;
             var intResults_net_profit = net_profit_sudain ;
 
@@ -263,7 +263,7 @@
            document.getElementById("totle_qure").value = sumq;
            document.getElementById("net_profit").value = sumq2;
            document.getElementById("net_profit_sudain").value = sumq_net_profit;
-            
+
 
         }
 
@@ -273,7 +273,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    
+
     function DeleteApp(val) {
          console.log();
         Swal.fire({
@@ -283,7 +283,7 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: " @lang('نعم ، احذفها!')", 
+            confirmButtonText: " @lang('نعم ، احذفها!')",
             cancelButtonText: " @lang('إلغاء')"
             }).then((result) => {
             if (result.isConfirmed) {
