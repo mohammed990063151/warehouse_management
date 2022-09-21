@@ -183,7 +183,7 @@
 
                             <div class="form-group">
                                 <label>  قيمة البضاعة في المخزن بجنية المصري</label>
-                                <input type="number" class="form-control" step="0.01" value="{{$Stored_capital}}"  id="Stored_capital" readonly >
+                                <input type="number" class="form-control" step="0.01" value="{{ intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10)}}"  id="Stored_capital" readonly >
                                 {{-- <span class="bg-warning text-white">{{number_format($Stored_capital, 2)}}</span> --}}
                             </div>
 

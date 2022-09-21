@@ -53,11 +53,21 @@ class CabinetController extends Controller
             DB::raw('SUM(total_discuont) as sum')
 
         )->get();
-        $int = intval(preg_replace('/[^0-9]+/', '', $sales_data), 10);
-        $data = intval(preg_replace('/[^0-9]+/', '', $departed_data), 10);
-        $products_capital = intval(preg_replace('/[^0-9]+/', '', $products_capital), 10);
-        $Stored_capital = intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10);
-        $discuont = intval(preg_replace('/[^0-9]+/', '', $orders), 10);
+        // $int = intval(preg_replace('/[^0-9]+/', '', $sales_data), 10);
+        // $data = intval(preg_replace('/[^0-9]+/', '', $departed_data), 10);
+        // $products_capital = intval(preg_replace('/[^0-9]+/', '', $products_capital), 10);
+        // $Stored_capital = intval(preg_replace('/[^0-9]+/', '', $Stored_capital), 10);
+        // $discuont = intval(preg_replace('/[^0-9]+/', '', $orders), 10);
+        // dd($int , $data , $products_capital, $Stored_capital, $discuont);
+
+        $int = Cabinet::sum('Cabinet');
+        $discuont = $orders = Order::sum('total_discuont');
+        $products_capital = Product::sum('capital');
+        $Stored_capital = Product::sum('Stored_capital');
+        $data = $departed_data = Cabinet::sum('departed');
+        // dd($int, $orders, $products_capital, $departed_data , $products_capital);
+
+
         // dd($int , $data , $products_capital, $Stored_capital, $discuont);
         return view('admin.Cabinet.index', compact('Cabinet' ,'int','data','orders','Stored_capital','discuont', 'products_capital'));
 
