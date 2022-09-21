@@ -100,7 +100,8 @@ class OrdertController extends Controller
         $Cabinet = Cabinet::with('Cabinet');
         $Cabinet->create([
             'Cabinet' => $request->discuont,
-            'description' => 'تم تحويلها من الطلبات',
+            'order_id' => $order->id,
+            'description' => $client->name,
             'Created_by' => (Auth::user()->first_name),
             'discuont'=> 0
         ]);
@@ -117,7 +118,7 @@ class OrdertController extends Controller
             ]);
 
         }//end of for each
-
+       
         $order->delete();
         // $Cabinet->delete();
 

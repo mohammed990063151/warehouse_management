@@ -27,7 +27,13 @@ class Cabinet  extends Model
         'Cabinet',
         'Created_by',
         'departed',
+        'order_id',
     ];
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+
+    }//end of orders
     // protected $with = ['translations'];
     // public $translatedAttributes = ['name'];
 }
